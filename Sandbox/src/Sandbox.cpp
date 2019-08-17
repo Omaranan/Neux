@@ -1,6 +1,6 @@
-#include <Test.h>
+#include <Neux.h>
 
 int main()
 {
-	Neux::Print("Hello Hello!\n Goodie Goodie!");
+	Neux::Print("Hello Hello!\nGoodie Goodie!");
 }

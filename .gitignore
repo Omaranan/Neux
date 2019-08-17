@@ -1,5 +1,9 @@
 # git Ignore Files
 
+# ignore Building Directories
+/bin/
+/bin-int/
+
 # ignore the .vs Dir
 /.vs/
 
