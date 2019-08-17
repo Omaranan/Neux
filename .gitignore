@@ -1,0 +1,12 @@
+# git Ignore Files
+
+# ignore the .vs Dir
+/.vs/
+
+# ignore the Visual Studio Solution Files
+*.sln
+
+#ignore the Visual Studio Projects Files
+*.vcxproj
+*.filters
+*.user
