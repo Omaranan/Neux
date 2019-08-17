@@ -1,3 +1,3 @@
 #pragma once
-
-#include "src/Test.h"
+// Client Side Application Creation
+#include "src/Application/Application.h"

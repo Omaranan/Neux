@@ -2,5 +2,6 @@
 
 int main()
 {
-	Neux::Print("Hello Hello!\nGoodie Goodie!");
+	Neux::Application app;
+	app.Run();
 }
