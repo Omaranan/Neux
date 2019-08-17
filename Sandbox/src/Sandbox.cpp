@@ -1,7 +1,19 @@
 #include <Neux.h>
 
-int main()
+class Sandbox : public Neux::Application
 {
-	Neux::Application app;
-	app.Run();
+public:
+	Sandbox()
+	{
+	}
+
+	~Sandbox()
+	{
+	}
+
+};
+
+Neux::Application* Neux::CreateApplication()
+{
+	return new Sandbox;
 }

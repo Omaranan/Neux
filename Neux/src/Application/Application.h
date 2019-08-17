@@ -15,4 +15,7 @@ namespace Neux
 		void Run();
 
 	};
+
+	// To Be Defined by the Client
+	Application* CreateApplication();
 } // Neux Namespace
