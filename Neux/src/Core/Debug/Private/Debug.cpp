@@ -1,8 +1,8 @@
 /*********************************************************************************/
-/*  Sandbox.cpp                                                                  */
+/*  Debug.cpp                                                                    */
 /*********************************************************************************/
 /*                             This file is part of:                             */
-/*                              NEUX ENGINE EXAMPLES                             */
+/*                                  NEUX ENGINE                                  */
 /*                     https://github.com/AhmadMamdouhEnan/Neux                  */
 /*********************************************************************************/
 /* Copyright (c) 2019 Ahmad Mamdouh Enan										 */
@@ -26,32 +26,22 @@
 /* SOFTWARE.                                                                     */
 /*********************************************************************************/
 
-#include <Neux.h>
+#include "../Public/Debug.h"
+#include <Core/Log/Public/Log.h>
 
-class Sandbox : public Neux::Application
+namespace Neux
 {
-public:
-	Sandbox()
+	// These Functions Should be Logging to the GUI Console
+	// Temporarily they Will Log to the CMD
+
+	void Debug::Log(const char* msg)
 	{
-		// You Can Log to The Console Using 2 Methods
-
-		// 1. Using a Macro
-		// Advantage : it Supports Logging Variables Without Using a String
-		LOG_WARN("Starting ...");
-
-		// 2. Using the 'Debug' Class
-		// Disadvanatges : 1. You Can Just Log Info & Error
-		//				   2. To Log Variables you Must Use a String
-		Neux::Debug::Log("Logging ...");
+		Log::getClientLogger()->info(msg);
+	}
+	
+	void Debug::LogError(const char* msg)
+	{
+		Log::getClientLogger()->error(msg);
 	}
 
-	~Sandbox()
-	{
-	}
-
-};
-
-Neux::Application* Neux::CreateApplication()
-{
-	return new Sandbox;
-}
+} // Neux Namespace

@@ -44,7 +44,9 @@ namespace Neux
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
 		KeyPressed, KeyReleased, KeyTyped,
-		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
+		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled,
+
+		CustomEvent // Allow the Client to Take Advantage of the Event System
 	};
 
 	enum EventCategory
