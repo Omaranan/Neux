@@ -1,11 +1,11 @@
 /*********************************************************************************/
-/*  typedefs.h                                                                   */
+/*  macros.h                                                                     */
 /*********************************************************************************/
 /*                             This file is part of:                             */
 /*                                  NEUX ENGINE                                  */
 /*                     https://github.com/AhmadMamdouhEnan/Neux                  */
 /*********************************************************************************/
-/*Copyright (c) 2019 Ahmad Mamdouh Enan											 */
+/* Copyright (c) 2019 Ahmad Mamdouh Enan										 */
 /*																			     */
 /* Permission is hereby granted, free of charge, to any person obtaining a copy	 */
 /* of this software and associated documentation files (the "Software"), to deal */

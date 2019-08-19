@@ -17,5 +17,8 @@ namespace Neux
 	};
 
 	// To Be Defined by the Client
+	// The Pointer That This Function Returns Will be the Pointer Used
+	// By The Main Function.
 	Application* CreateApplication();
+
 } // Neux Namespace
