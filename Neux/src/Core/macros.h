@@ -34,6 +34,12 @@
 #define _MKSTR(m_x) _STR(m_x)
 #endif // !_STR
 
+// Basic Bit Macro
+#ifndef BIT
+	#define BIT(x) (1 << x)
+#endif // !BIT
+
+
 // Undefine Windows Pre-Defined Stuff
 #ifdef _WIN32
 	#undef min		  // override standard definition
