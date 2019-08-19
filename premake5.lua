@@ -3,14 +3,18 @@ workspace "Neux"
 	architecture "x64"
 	startproject "Sandbox"
 
-	configurations{
+	configurations {
 		"Debug",
 		"Release",
 		"Distribution"
 	}
 
+-- Common Output Directory
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include Directories Relative to the Root Path
+IncludeDirs = {}
+IncludeDirs["spdlog"] = "Neux/vendor/spdlog/include" -- spdlog Logging Library
 
 project "Neux"
 	location "Neux"
@@ -22,27 +26,28 @@ project "Neux"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir    ("bin-int/" .. outputDir .. "/%{prj.name}")
 
-	files{
+	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 	}
 
-	defines{
+	defines {
 		"_CRT_SECURE_NO_WARNINGS"
 	}
 
-	includedirs{
-		"%{prj.name}/src"
+	includedirs {
+		"%{prj.name}/src",
+		"%{IncludeDirs.spdlog}"
 	}
 
-	links{
+	links {
 		"opengl32.lib"
 	}
 
 	filter "system:windows"
 		systemversion "latest"
 
-		defines{
+		defines {
 			"NX_PLATFORM_WINDOWS",
 			-- Since We Will Integrate GLFW in the Future
 			"GLFW_INCLUDE_NONE"
@@ -73,12 +78,12 @@ project "Sandbox"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 
-	files{
+	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"	
 	}
 
-	includedirs{
+	includedirs {
 		"Neux"
 	}
 
