@@ -14,7 +14,7 @@ outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include Directories Relative to the Root Path
 IncludeDirs = {}
-IncludeDirs["spdlog"] = "Neux/vendor/spdlog/include" -- spdlog Logging Library
+IncludeDirs["spdlog"] = "Neux/Vendor/spdlog/include" -- spdlog Logging Library
 
 project "Neux"
 	location "Neux"
@@ -32,7 +32,8 @@ project "Neux"
 	}
 
 	defines {
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"NEUX_ENGINE"
 	}
 
 	includedirs {
@@ -84,7 +85,8 @@ project "Sandbox"
 	}
 
 	includedirs {
-		"Neux"
+		"Neux",
+		"%{IncludeDirs.spdlog}" -- Visual Studio Complains About the 'spdlog.h' include.
 	}
 
 	links {

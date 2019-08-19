@@ -1,5 +1,5 @@
 /*********************************************************************************/
-/*  Application.cpp                                                              */
+/*  Log.cpp                                                                      */
 /*********************************************************************************/
 /*                             This file is part of:                             */
 /*                                  NEUX ENGINE                                  */
@@ -26,20 +26,25 @@
 /* SOFTWARE.                                                                     */
 /*********************************************************************************/
 
-#include "Application.h"
-
+#include "../Public/Log.h"
+#include <spdlog/sinks/stdout_color_sinks.h>
 namespace Neux
 {
-	// Constructor
-	Application::Application()
-	{
-		isRunning = true;
-	}
 
-	// Run Method ( Where Everything Starts )
-	void Application::Run()
+	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
+	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+
+	void Log::Init()
 	{
-		while (isRunning);
+		spdlog::set_pattern("%^[%T] %n: %v%$");
+
+		s_CoreLogger = spdlog::stdout_color_mt("NEUX");
+		s_CoreLogger->set_level(spdlog::level::trace);
+
+		s_ClientLogger = spdlog::stdout_color_mt("GAME");
+		s_ClientLogger->set_level(spdlog::level::trace);
+
+		Neux::Log::getCoreLogger()->warn("Intialized the Logger");
 	}
 
 } // Neux Namespace

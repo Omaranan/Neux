@@ -5,6 +5,7 @@ class Sandbox : public Neux::Application
 public:
 	Sandbox()
 	{
+		LOG_WARN("Starting ...");
 	}
 
 	~Sandbox()
