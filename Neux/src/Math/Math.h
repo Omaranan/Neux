@@ -1,10 +1,10 @@
-/*********************************************************************************/
-/*  Sandbox.cpp                                                                  */
-/*********************************************************************************/
+//********************************************************************************/
+/*  Math.h                                                                       */
+//********************************************************************************/
 /*                             This file is part of:                             */
-/*                              NEUX ENGINE EXAMPLES                             */
+/*                                  NEUX ENGINE                                  */
 /*                     https://github.com/AhmadMamdouhEnan/Neux                  */
-/*********************************************************************************/
+//********************************************************************************/
 /* Copyright (c) 2019 Ahmad Mamdouh Enan										 */
 /*																			     */
 /* Permission is hereby granted, free of charge, to any person obtaining a copy	 */
@@ -26,36 +26,6 @@
 /* SOFTWARE.                                                                     */
 /*********************************************************************************/
 
-#include <Neux.h>
+#pragma once
 
-class Sandbox : public Neux::Application
-{
-public:
-	Sandbox()
-	{
-		// You Can Log to The Console Using 2 Methods
-
-		// 1. Using a Macro
-		// Advantage : it Supports Logging Variables Without Using a String
-		LOG_WARN("Starting ...");
-
-		// 2. Using the 'Debug' Class
-		// Disadvanatges : 1. You Can Just Log Info & Error
-		//				   2. To Log Variables you Must Use a String
-		Neux::Debug::Log("Logging ...");
-
-		// Printing A Vector2 To The Console (TEST)
-		Neux::Math::Vector2 vec(2, 4);
-		LOG_CRITICAL("Vec : {0}", vec.ToString());
-	}
-
-	~Sandbox()
-	{
-	}
-
-};
-
-Neux::Application* Neux::CreateApplication()
-{
-	return new Sandbox;
-}
+#include "Public/Vector2.h" // 2D Vectors

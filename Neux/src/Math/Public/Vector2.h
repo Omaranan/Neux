@@ -1,5 +1,5 @@
 /*********************************************************************************/
-/*  macros.h                                                                     */
+/*  Vector2.h                                                                    */
 /*********************************************************************************/
 /*                             This file is part of:                             */
 /*                                  NEUX ENGINE                                  */
@@ -28,72 +28,93 @@
 
 #pragma once
 
-// In & Out (Makes Functions Alot Easier to Read)
-#define _IN  // The Arguments that Will be taken as Input to a Function
-#define _OUT // The Arguments that Will be Taken as Output Contatiners.
+#define _IN_AND_OUT_ONLY // Gets Just the _IN & _OUT Defines
+#include <Core/macros.h>
 
-#ifndef _IN_AND_OUT_ONLY
-// Basic Name To String
-#ifndef _STR
-#define _STR(m_x) #m_x
-#define _MKSTR(m_x) _STR(m_x)
-#endif // !_STR
+#include <ostream>// STL I/O Library
+#include <string> // C++ STL String
 
-// Basic Bit Macro
-#ifndef BIT
-	#define BIT(x) (1 << x)
-#endif // !BIT
+namespace Neux
+{
+	namespace Math
+	{
+		struct Vector2
+		{
+			/** Vector's X component. */
+			float x;
 
+			/** Vector's Y component. */
+			float y;
 
-// Undefine Windows Pre-Defined Stuff
-#ifdef _WIN32
-	#undef min		  // override standard definition
-	#undef max		  // override standard definition
-	#undef ERROR	  // override (really stupid) wingdi.h standard definition
-	#undef DELETE	  // override (another really stupid) winnt.h standard definition
-	#undef MessageBox // override winuser.h standard definition
-	#undef MIN		  // override standard definition
-	#undef MAX		  // override standard definition
-	#undef CLAMP	  // override standard definition
-	#undef Error
-	#undef OK
-	#undef CONNECT_DEFERRED // override from Windows SDK, clashes with Object enum
-#endif
+		public: // Globals/Constants
 
-#ifndef ABS
-#define ABS(m_v) (((m_v) < 0) ? (-(m_v)) : (m_v))
-#endif
+			/** zero vector2 constant (0, 0) */
+			static const Vector2 Zero;
+			
+			/** One vector2 constant (1, 1) */
+			static const Vector2 One;
+			
+			/** Right vector2 constant (1, 0) */
+			static const Vector2 Right;
+			
+			/** Left vector2 constant (-1, 0) */
+			static const Vector2 Left;
+			
+			/** Up vector2 constant (0, 1) */
+			static const Vector2 Up;
+			
+			/** Down vector2 constant (0, -1) */
+			static const Vector2 Down;
 
-#define ABSDIFF(x, y) (((x) < (y)) ? ((y) - (x)) : ((x) - (y)))
+		public: // Constructors
 
-#ifndef SGN
-#define SGN(m_v) (((m_v) < 0) ? (-1.0) : (+1.0))
-#endif
+			/**
+			 * Default Constructor
+			 *
+			 * @note Intializes Both Components to Zero
+			 */
+			Vector2();
 
-#ifndef MIN
-#define MIN(m_a, m_b) (((m_a) < (m_b)) ? (m_a) : (m_b))
-#endif
+			/**
+			 * Constructor using one Scalar for Both Components.
+			 *
+			 * @param _IN s Scalar Value.
+			 */
+			Vector2(_IN float s);
+			
+			/**
+			 * Constructor using initial values for each component.
+			 *
+			 * @param _IN x For X coordinate.
+			 * @param _IN y For Y coordinate.
+			 */
+			Vector2(_IN float x, _IN float y);
+			
+			/**
+			 * Copy Constructor using another Vector.
+			 *
+			 * @param _IN vec another Vector2.
+			 */
+			Vector2(_IN const Vector2& vec);
 
-#ifndef MAX
-#define MAX(m_a, m_b) (((m_a) > (m_b)) ? (m_a) : (m_b))
-#endif
+		public: // Printing Helpers
+			
+			/**
+			 * Left Shift Operator.
+			 *
+			 * @param _IN out The Output Stream.
+			 * @param _IN vec The Vector2.
+			 */
+			friend std::ostream& operator << (std::ostream& out, const Vector2& vec);
 
-#ifndef CLAMP
-#define CLAMP(m_a, m_min, m_max) (((m_a) < (m_min)) ? (m_min) : (((m_a) > (m_max)) ? m_max : m_a))
-#endif
+			/**
+			 * To String Function.
+			 *
+			 * @return a String Like '(vec.x, vec.y)'
+			 */
+			std::string ToString();
+		};
 
-/** Generic swap template */
-#ifndef SWAP
+	} // Math Namespace
 
-#define SWAP(m_x, m_y) __swap_tmpl((m_x), (m_y))
-template <class T>
-inline void __swap_tmpl(T& x, T& y) {
-
-	T aux = x;
-	x = y;
-	y = aux;
-}
-
-#endif //swap
-
-#endif // !_IN_AND_OUT_ONLY
+} // Neux Namespace

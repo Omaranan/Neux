@@ -86,7 +86,9 @@ project "Sandbox"
 
 	includedirs {
 		"Neux",
+		"Neux/src", -- Visual Studio Complains About the 'macros.h' include.
 		"%{IncludeDirs.spdlog}" -- Visual Studio Complains About the 'spdlog.h' include.
+		-- Visual Studio Complains ALOT
 	}
 
 	links {

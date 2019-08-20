@@ -16,7 +16,9 @@
 #include "src/Core/macros.h"			 // Pre-Defined Core Macros
 #include "src/Core/Log/Public/Log.h"     // Logging Wrapper for spdlog
 #include "src/Core/Debug/Public/Debug.h" // Debugging Class
-// 
+
+#include "src/Math/Math.h" // Math Library
+// -----------------------------------------------------------
 
 /*----- Entry Point ----------------------------------------*/
 int main(int argc, char **argv)
